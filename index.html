@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="//unpkg.com/alpinejs" defer></script> <!-- js per aprire e chiudere toggle menù -->
+
+
+    <title>Viavài</title>
+    <link rel="icon" type="image/x-icon" href="icone/favicon.png">
+</head>
+<body>
+
+        <!-- NAVIGAZIONE MOBILE - fuori dal container principale così la barra bianca rimane fissa e uniforme -->
+    
+        <div class="primary-navigation" x-data="{ open: false }"> 
+        <ul class="nav-bar-mobile"> <!-- Parent -->
+            <div class="logo-mobile"> <!-- Child -->
+                <a href="index.html"><img src="icone/logo.svg"></a></div> 
+            <!-- <li class="logo-mobile"><a href="index.html">Viavài</a></li> -->
+            <button  @click="open = !open" class="mobile-nav-toggle"> <!-- Child -->
+                <span x-show="open">
+                <img class="icon" src="icone/hamburger-close.svg" style="width: 25px" alt=""></span>
+                <span x-show="!open"><img class="icon" src="icone/hamburger-menu.svg" style="width: 25px" alt="">
+                </span>
+        </button>
+    </ul>
+
+    <!-- Lista pagine -->
+    <div class="nav-list-mobile" x-show="open" x-transition>
+        <li><a href="#about">Chi siamo</a></li>
+        <li><a href="#funzioni">Come funziona</a></li>
+    </div>
+    </div>  <!-- FINE NAVIGAZIONE MOBILE-->
+
+
+ 
+
+
+<!-- Barra di navigazione desktop -->
+        <nav class="nav-bar-desktop-container">
+            <ul class="nav-bar-desktop"> <!-- Parent-->
+                <div class="logo">
+                    <a href="index.html"><img src="icone/logo.svg"></a></div> <!-- Child 1-->
+            <div class="nav-pages"><li><a href="#about">CHI SIAMO</a></li> <!-- Child 2 - così possono stare agli estremi della pagina-->
+            <li><a href="#funzioni">COME FUNZIONA</a></li></div>
+        </ul>
+    </nav>
+
+
+
+<!-- HERO SECTION - fuori dal container per immagine che esce -->
+<div class="hero-section"> <!-- Parent -->
+    <!-- Child 1 -->
+    <div class="hero-text"> 
+    <h1>Parti senza guai</h1>
+    <p>Spesso quello che ci ferma da un viaggio
+        <br class="break-desk">sono le preoccupazioni, ma non è mai troppo
+        <br class="break-desk">tardi per girare il mondo serenamente.</p>
+    <button class="agenzia">SCEGLI L'AGENZIA</button>
+    </div>
+
+    <!-- Child 2 -->
+    <div class="hero-image">
+    <img src="immagini/hero-section.png" alt="Illustrazione Parti senza guai">
+    </div>
+
+</div>
+
+
+<!-- SCHERMATA HOME DELL'APP -->
+    <div class="banda-blu">
+<div class="device-section">
+    <img src="immagini/gifs/Screen-Home.png" alt="Schermata principale app">
+    <p>Con Viavai puoi personalizzare <br class="break-desk">il tuo viaggio e semplificarne <br class="break-desk">la pianificazione, secondo i tuoi desideri ed esigenze</p>
+</div>
+</div>
+
+
+
+
+
+
+
+ <!-- CONTAINER PER MARGINI-->
+<div class="container">
+<!-- FUNZIONALITÀ -->
+<section id="funzioni"> <!-- Section per voce "Come funziona" -->
+<h2>Come funziona</h2> 
+<!-- Parent -->
+<div class="sistema">
+    <!-- Children -->
+<div class="sistema-singolo">
+    <img src="immagini/sistema/sistema-1.png" alt="in agenzia">
+    <div class="sistema-numero">1</div>
+<p class="p-sistema">Vai in agenzia per scoprire <br class="break-desk">la tua prossima meta </p>
+</div>
+
+<div class="sistema-singolo">
+    <img src="immagini/sistema/sistema-2.png" alt="prenota viaggio">
+    <div class="sistema-numero">2</div>
+<p class="p-sistema">Prenota il tuo viaggio accessibile insieme all'agente</p>
+</div>
+
+<div class="sistema-singolo">
+    <img src="immagini/sistema/sistema-3.png" alt="comodità nell'utilizzare app">
+    <div class="sistema-numero">3</div>
+<p class="p-sistema">Utilizza l’app per gestire<br class="break-desk"> il viaggio in modo semplice, <br class="break-desk">sia prima che durante </p>
+</div>
+
+</div>
+</section>
+
+
+
+<!-- SCHERMATA TABLET AGENTE -->
+<h2>In agenzia</h2>
+<div class="tablet-agenzia">
+    <img src="immagini/gifs/Screen-Agente.gif" alt="Schermata tablet agenzia">
+    <p>In compagnia dell’agente <br class="break-desk">e grazie all'intelligenza artificiale, potrai creare il piano di attività più adatto a te</p>
+</div>
+
+<!-- PRIMA DI PARTIRE -->
+
+<h2>Prima di partire</h2>
+<div class="prepartenza"> <!-- Parent -->
+
+    <!-- Children -->
+    <div class="function">
+        <img class="function-img" src="immagini/funzioni/functions-1.jpg" alt="piano giornaliero">
+        <h3>Pianificazione intelligente</h3>
+        <p>Se non sei soddisfatto delle attività pianificate, potrai modificarle in ogni momento grazie all'intelligenza artificiale</p>
+    </div>
+
+    <div class="function">
+        <img class="function-img" src="immagini/funzioni/functions-2.jpg" alt="checklist valigia">
+        <h3>In valigia tutto il necessario</h3>
+        <p>Saprai cosa portare con te in base alle attività pianificate, clima e destinazione</p>
+    </div>
+
+    <div class="function">
+        <img class="function-img" src="immagini/funzioni/functions-3.jpg" alt="sezione medicine">
+        <h3>Quante medicine devo portarmi?</h3>
+        <p>Potrai visualizzare di quante medicine <br class="break-desk">hai bisogno per tutta la durata del viaggio</p>
+    </div>
+
+    <div class="function">
+        <img class="function-img" src="immagini/funzioni/functions-4.jpg" alt="sezione salute in viaggio">
+        <h3>Salute</h3>
+        <p>Rimarrai aggiornato sulla salute locale <br class="break-desk">per arrivare preparato ovunque andrai </p>
+    </div>
+</div>
+
+
+<!-- DURANTE IL VIAGGIO -->
+
+<h2>Durante il viaggio</h2>
+<div class="prepartenza"> <!-- Parent -->
+
+    <!-- Children -->
+    <div class="function">
+        <img class="function-img" src="immagini/funzioni/functions-5.jpg" alt="sezione assistenza">
+        <h3>Assistenza sul luogo</h3>
+        <p>Potrai rivolgerti all'intelligenza artificiale, sarà come avere un assistente di viaggio sempre disponibile</p>
+    </div>
+
+    <div class="function">
+        <img class="function-img" src="immagini/funzioni/functions-6.jpg" alt="chatbot">
+        <h3>Rimani sempre in contatto</h3>
+        <p>In alternativa potrai entrare in contatto <br class="break-desk">con il tuo agente in Italia in qualunque momento</p>
+    </div>
+</div>
+
+
+
+
+
+<!-- SOCIAL PROOF -->
+
+<h2>Cosa dicono di Viavài</h2>
+<!-- Parent -->
+<div class="quadrati">
+    <!-- Children -->
+    <div class="recensione">
+    <img class="cuoricini" src="icone/cuori-recensioni.png" alt="valutazione">
+    <p>Mai più senza! Pensavo di non essere più all’altezza per un viaggio intercontinentale, invece
+        me lo sono goduto.</p>
+    <p style="font-style: italic;">Mariagrazia R.</p>
+    </div>
+
+<div class="recensione">
+    <img class="cuoricini" src="icone/cuori-recensioni.png" alt="valutazione">
+    <p>Se non vi piace partire alla carlona, vi consiglio questo servizio. È facile da usare e anche molto comodo!</p>
+    <p style="font-style: italic;">Enza L.</p>
+</div>
+
+<div class="recensione">
+    <img class="cuoricini" src="icone/cuori-recensioni.png" alt="valutazione">
+    <p>Per me che mi scordo sempre tutto questo è stato un salvavita. Sono contento di aver ripreso a viaggiare dopo tanto!</p>
+    <p style="font-style: italic;">Fazio P.</p>
+</div>
+</div>
+
+
+
+<!-- VIDEO PROGETTO -->
+
+<h2>Perché scegliere Viavài</h2>
+<iframe src="https://www.youtube.com/embed/FS76eFigYq4" allowfullscreen="" frameborder="0">
+</iframe>
+
+
+
+<!-- METE DA SCOPRIRE -->
+
+<h2>Scopri la tua prossima meta dei sogni</h2>
+<div class="destinazioni-gif"><img src="immagini/gifs/onboarding.gif" alt="varie destinazioni">
+</div>
+
+
+
+
+
+</div> <!-- fine container -->
+
+<!-- FOOTER - fuori dal container così lo sfondo può ignorare i margini -->
+<section id="about"><footer> <!-- Section per voce "Chi siamo" -->
+    <div class="footer-text">
+        <div><p>© Viavài 2023.</p>
+        Tutti i diritti riservati.</div>
+    
+    <div>
+    <h3>Contattaci</h3>
+           <p>info@viavai.it</p>
+           <p>+39 0234588245</p>
+        </div>
+
+        <div>
+            <h3>Laboratorio di Sistemi<br class="break-desk">per l'Interazione</h3>
+                   <p>Roberta Tassi</p>
+                   <p>Maristella Matera</p>
+                   <p>Guido Parlato</p>
+                   <p>Jacopo Sironi</p>
+                   <p>Denise Orifici</p>
+                </div>
+
+        <div>
+            <h3>Progetto di</h3>
+                <p>Chiara Barberi</p>
+                <p>Carola Gaulli</p>
+                <p>Eleonora Morea</p>
+                <p>Federica Pasquini</p>
+                <p>Matteo Romanò</p>
+            </div>
+
+        </div>
+    </footer>
+</section>
+
+    </body>
+
+
+</html>

@@ -1,0 +1,762 @@
+:root {
+    /* Colori */
+    --light-blue: #D6F3FF;
+    --blue: #5673AE;
+    --purple: #E3B7FA;
+    --grey: #D9D9D9;
+    --dark-blue: #002A7C;
+
+    /* Schermi */
+    --max-width-d: 73.438rem; /* 1175px */
+    --max-width-m: 20.5rem; /* 328px */
+    --max-width-t: 42.75rem; /* 684px */
+  
+    /* Spazi: 1=più piccolo, x=più grande */
+    --sp-05: 1rem; /* 16px */
+    --sp-1: 1.5rem; /* 24px */
+    --sp-2: 2rem; /* 32px */
+    --sp-3: 2.75rem; /* 44px */
+    --sp-4: 5.5rem; /* 88px */
+    --sp-5: 11rem; /* 176px */
+
+    /* Font size */
+    --fs-small: 1.5rem; /* 24px */
+    --fs-medium: 2.5rem; /* 40px */
+    --fs-big: 3.75rem; /* 60px */
+    --fs-xsmall: 1rem; /* 16px */
+
+
+}
+
+/* ANIMAZIONE SCROLLING */
+.reveal {
+  transform: translateY(100px); /* quanto scorre verso l'alto */
+  opacity: 0; /* stato iniziale trasparente */
+  transition: 1s all ease; /* interpolazione animazione */
+}
+
+.reveal.active {
+  transform: translateY(0); /* arriva alla posizione originale */
+  opacity: 1; /* diventa visibile */
+}
+
+/* FONT */
+
+@font-face {
+  font-family: 'PP Object Sans';
+  src: url('fonts/PPObjectSans-Regular.woff') format('woff'),
+  url('fonts/PPObjectSans-Regular.otf') format('otf'),
+  url('fonts/PPObjectSans-Regular.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'PP Object Sans';
+  src: url('fonts/PPObjectSans-Bold.woff') format('woff'),
+  url('fonts/PPObjectSans-Bold.otf') format('otf'),
+  url('fonts/PPObjectSans-Bold.ttf') format('ttf'); font-weight: bold;
+}
+
+
+
+
+/* CSS reset dei default styling di HTML preso da https://piccalil.li/blog/a-modern-css-reset*/
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  /* display: block; */
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Testo */
+body {
+  font-family: 'PP Object Sans';
+  font-size: var(--fs-small);
+  color: var(--dark-blue);
+}
+
+
+
+h1 {
+  font-size: var(--fs-big);
+  margin-bottom: 0;
+}
+
+
+
+h2 {
+  font-size: var(--fs-medium);
+  text-align: center;
+  margin-bottom: var(--sp-2);
+}
+
+
+h3 {
+  font-size: var(--fs-small);
+}
+
+
+/* Link */
+
+a:visited {
+  color: var(--dark-blue);
+  text-decoration: none; 
+  font: inherit;
+}
+
+a:link {
+  text-decoration: none;
+  color: var(--dark-blue);
+  font-size: 20px;
+}
+/* Griglia */
+
+.container {
+  width: min(var(--max-width-d, 100%));
+  margin-inline: auto; /* margins enlarge and reduced */
+  margin-top: var(--sp-4);
+}
+
+
+/* Barra di navigazione desktop */
+
+.nav-bar-desktop-container {
+ position: fixed;
+ width: 100vw;
+  margin-inline: auto;
+ margin: 0;
+ background-color: white;
+ padding-inline: 150px;
+ padding-top: 50px;
+ padding-bottom: 30px;
+ top: 0;
+}
+/* Parent */
+.nav-bar-desktop {
+    display: flex;
+    flex-direction: row;
+    padding: 0; /* per togliere setting di default ul */
+    list-style: none; /* per togliere setting di default link */
+    align-items: center; /* per centrarli orizzontalmente */
+    justify-content: space-between;
+    margin: 0;
+   
+   
+    /* top: 50px; */
+    
+}
+
+/* Child 1 (sx) */
+.logo {
+justify-content: flex-start; /* logo a sinistra */
+}
+
+.logo a img {
+  width: 30%;
+}
+
+/* Child 2 (dx) */
+.nav-pages {
+  display: flex;
+  gap: var(--sp-1);
+  font-weight: bold;
+  color: var(--dark-blue);
+}
+
+/* Barra di navigazione mobile - non visibile */
+.mobile-nav-toggle {
+  background-color: transparent;
+  border: none;
+  display: none;
+}
+
+.nav-list-mobile {
+  display: none;
+}
+
+.logo-mobile {
+  display: none;
+}
+
+
+/* HERO SECTION */
+
+/* Parent */
+.hero-section {
+  display: flex;
+  align-items: center; /* centrati orizzontalmente */
+  gap: 75px;
+  margin-top: calc(var(--sp-3)*4);
+  margin-left: 150px; /* margine sinistro perché non è nel container con margini settati */
+  justify-content: space-between;
+}
+
+/* Child 1 (sx) */
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  flex-grow: 3;
+}
+
+.hero-image {
+  flex-grow: 1;
+  max-width: 50%;
+}
+
+
+/* Bottone "Scegli l'agenzia" */
+button.agenzia {
+  background-color: var(--light-blue);
+  color: var(--dark-blue);
+  border-radius: 20px; /* curvatura degli angoli */
+  border: none;
+  padding: 15px var(--sp-2); /* spazio attorno alla scritta (padding invece di margin così prende background color */
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  width: 231px;
+  cursor: pointer; /* pointer manina così sembra cliccabile */
+  margin-top: 50px;
+}
+
+
+/* Sezione sotto hero section (iphone + testo) esclusa banda blu */
+.device-section {
+  display: flex;
+  gap: 75px;
+  align-items: center;
+  margin-inline: 150px; /* margini ridichiarati perché non è nel container con margini settati */
+  color: white;
+}
+
+.device-section img, .tablet-agenzia img {
+  max-width: 60%;
+}
+
+
+
+.banda-blu {
+  background-color: var(--blue);
+  margin-top: calc(var(--sp-3)*5); /* spazio tra banda blu e fine hero section per centrare iphone */
+  height: 450px;
+  display: flex; /* così banda blu e iphone centrati */
+  margin-bottom: calc(var(--sp-3)*5); /* spazio tra banda blu e sezione sotto */
+}
+
+
+/* COME FUNZIONA */
+
+/* Parent */
+.sistema {
+  display: grid;
+  grid-template-columns: 375px 375px 375px;
+ /* margini laterali così centrato */
+  text-align: center;
+  column-gap: 25px;
+  margin-bottom: var(--sp-5);
+}
+
+/* Children */
+.sistema-singolo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.sistema-singolo img {
+  max-width: 75%;
+}
+
+/* Numero nel cerchio */
+.sistema-numero {
+  width: 60px; /* diametro cerchio */
+  height: 60px;
+  line-height: 60px; /* interlinea = diametro per centrare il numero */
+  border-radius: 50%; /* curvatura per farlo diventare cerchio */
+  text-align: center;
+  background: var(--light-blue);
+}
+
+/* IN AGENZIA */
+
+.tablet-agenzia {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--sp-5);
+  }
+
+  /* .tablet-agenzia img {
+    max-width: 80%;
+  } */
+
+
+/* PRIMA DI PARTIRE E DURANTE IL VIAGGIO */
+/* Parent */
+.prepartenza {
+  display: grid;
+  grid-template-columns: 575px 575px;
+  grid-column-gap: 25px; /* spazio tra children orizzontale */
+  text-align: center;
+  grid-row-gap: var(--sp-3); /* spazio tra children verticale */
+  margin-bottom: var(--sp-5);
+}
+
+/* Child */
+.function {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-2);
+  }
+  
+.function img {
+    max-width: 50%;
+  }
+
+
+/* RECENSIONI */
+
+/* Parent */
+.quadrati {
+  display: grid;
+  grid-template-columns: 375px 375px 375px;
+  gap: 25px;
+  margin-bottom: var(--sp-5);
+}
+
+/* Children */
+.recensione {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* per riempire uniformemente il quadrato */
+  gap: 20px;
+  background-color: var(--purple);
+  border-radius: 50px;
+  padding: 35px; /* padding top e bottom */
+  padding-left: 45px;
+  padding-right: 45px;
+
+}
+
+img.cuoricini {
+  max-width: 60%; /* grandezza cuoricini */
+}
+
+
+/* Video Storytelling Progetto Youtube */
+iframe {
+    overflow-clip-margin: content-box !important;
+    border-width: 2px;
+    border-style: inset;
+    border-color: initial;
+    border-image: initial;
+    overflow: clip !important;
+    margin-bottom: var(--sp-5);
+    width: var(--max-width-d);
+   min-height: 600px;
+}
+
+/* METE */
+.destinazioni-gif {
+  display: flex;
+  justify-content: center;
+  }
+  
+  .destinazioni-gif img {
+    width: 40%;
+  }
+
+/* Footer */
+footer {
+  background-color: var(--blue);
+  margin-top: var(--sp-5);
+  padding-top: var(--sp-3);
+  padding-bottom: var(--sp-3);
+}
+
+.footer-text {
+  margin-left: 150px; /* margine ridichiarato perché non è nel container con margini settati */
+  display: flex;
+  justify-content: space-between;
+  margin-right: 30px;
+  font-size: var(--fs-xsmall);
+  color: white;
+}
+
+.footer-text h3 {
+  font-size: var(--fs-xsmall);
+  
+}
+
+
+/* CSS TABLET */
+@media screen and (max-width: 48rem) {
+  .container {
+    width: min(var(--max-width-t, 100%)); /* width breakpoint per griglia */
+    margin-inline: auto; 
+    margin-top: 50px;
+  }
+
+  .break-desk {
+    display: none;
+  }
+
+  /* Barra di navigazione */
+  .nav-bar-desktop-container {
+    padding-inline: 42px;
+   }
+
+   .logo a img {
+    min-width: 45%;
+  }
+  /* HERO SECTION */
+  /* Parent */
+
+  .hero-section {
+  flex-direction: column;
+  gap: var(--sp-4);
+  margin-top: var(--sp-5);
+  margin-inline: 42px;
+  align-items: flex-start;
+  /* margine sinistro perché non è nel container con margini settati */
+  }
+
+  .hero-image {
+    max-width: 100%;
+  }
+
+  
+  
+  /* Sezione sotto hero section (iphone + testo) esclusa banda blu */
+  .device-section, .tablet-agenzia {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+    justify-content: center; /* così è centrato alla banda blu */
+  }
+
+  .device-section img, .tablet-agenzia img {
+    max-width: 100%;
+  }
+
+  .banda-blu {
+    height: 750px;
+  }
+
+  /* COME FUNZIONA */
+
+/* Parent */
+  .sistema {
+    grid-template-columns: repeat(1, 1fr);
+    margin-left: 0px;
+    margin-right: 0px;
+    row-gap: var(--sp-3); /* spazio tra children */
+  }
+
+  .sistema-singolo {
+    row-gap: var(--sp-1); /* spazio all'interno del singolo child */
+  }
+
+
+
+/* PRIMA DI PARTIRE E DURANTE IL VIAGGIO */
+/* Parent */
+  .prepartenza {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+
+/* RECENSIONI */
+/* Parent */
+  .quadrati {
+    overflow: scroll; /* scroll orizzontale */
+    gap: var(--sp-1); /* gap tra children */
+  }
+
+
+/* video più piccolo */
+  iframe {
+  width: var(--max-width-t);
+  min-height: 400px;
+}
+
+.destinazioni-gif img {
+  width: 60%;
+}
+
+  .footer-text {
+    margin-left: 42px; /* margine ridichiarato perché fuori dal container */
+   flex-direction: column;
+    gap: var(--sp-1);
+  }
+
+}
+
+/* CSS MOBILE */
+@media screen and (max-width: 375px) {
+  .container {
+    width: min(var(--max-width-m, 100%));
+    margin-inline: auto; /* margins enlarge and reduced */
+    margin-top: 0; /* per la barra mobile */
+  }
+
+  body {
+    font-size: var(--fs-xsmall);
+  }
+
+  h1 {
+    font-size: calc(var(--fs-big)/2);
+    margin-bottom: 0;
+  }
+
+  h2 {
+    font-size: calc(var(--fs-medium)/2);
+  }
+
+  h3 {
+    font-size: var(--fs-xsmall);
+  }
+
+/* Barra di navigazione desktop non visibile */
+
+
+.nav-bar-desktop, .nav-bar-desktop-container {
+    display: none;
+}
+
+
+/* Barra di navigazione mobile */
+.nav-bar-mobile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white; 
+  /* Padding da tutti i lati così quando scorro c'è la barra bianca */
+  padding-top: 30px;
+  padding-inline: 25px;
+  padding-bottom: 20px;
+  margin-top: 0;
+  position: fixed;
+}
+
+/* Hamburger menu */
+.mobile-nav-toggle {
+  display: contents; /* visibile */
+}
+/* 
+button.icon {
+  display: flex;
+  width: 25px;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  justify-content: flex-end;
+} */
+
+.logo-mobile {
+  display: contents;
+}
+
+.logo-mobile a img {
+  width: 25%;
+}
+
+/* Menù aperto */
+.nav-list-mobile {
+  display: flex;
+  align-items: center; /* centrati verticalmente */
+  justify-content: center; /* centrati orizzontalmente */
+  flex-direction: column;
+  list-style: none;
+  row-gap: 20px;
+  height: 25vh;
+  width: 100vw;
+  position: fixed; /* segue la posizione della nav bar così non va sotto */
+  top: 50px; /* per farlo partire da sotto la nav bar */
+  background-color: white;
+  margin-top: 10px;  /* leggero margine per non andare sopra il logo */
+}
+
+/* HERO SECTION */
+/* Parent */
+  .hero-section {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 25px;
+    margin-top: 0;
+    padding-top: 150px;
+    margin-left: 23.5px; /* margine ridichiarato perché fuori dal container */
+  }
+
+  /* Child */
+  .hero-image {
+    width: var(--max-width-m);
+    margin-left: 23.5px; /* margine ridichiarato perché fuori dal container */
+  }
+
+  /* Bottone "Scegli l'agenzia" */
+  button.agenzia {
+    font-size: 14px;
+    width: 200px;
+    margin-top: 20px;
+  }
+
+  /* Sezione sotto hero section (iphone + testo) esclusa banda blu */
+  .device-section {
+    margin-inline: 24px;
+  }
+
+  .device-section p {
+    margin-right: 0px;
+  }
+
+  .banda-blu {
+    height: 500px;
+    margin-bottom: var(--sp-4);
+    margin-top: var(--sp-4);
+  }
+
+
+/* COME FUNZIONA */
+/* Parent */
+  .sistema {
+    row-gap: var(--sp-3);
+    margin-bottom: var(--sp-4);
+  }
+
+  /* Children */
+  .sistema-singolo img {
+    width: 50%;
+  }
+
+  /* Numero nel cerchio */
+  .sistema-numero {
+    width: var(--sp-3); /* più piccolo */
+    height: var(--sp-3);
+    line-height: var(--sp-3);
+  }
+
+  /* IN AGENZIA */
+  /* spazi più piccoli */
+  .tablet-agenzia, .prepartenza {
+    margin-bottom: var(--sp-4);
+    gap: var(--sp-3);
+  }
+  
+  /* Child di Prepartenza */
+  .function {
+    row-gap: var(--sp-1);
+  }
+
+
+/* RECENSIONI */
+/* Parent */
+  .quadrati {
+    grid-template-columns: 245px 245px 245px;
+    margin-bottom: var(--sp-4);
+    gap: var(--sp-05);
+  }
+
+  /* Children */
+  .recensione {
+    border-radius: 40px;
+    padding: 20px;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+/* Video Storytelling Progetto Youtube */
+iframe {
+  width: var(--max-width-m);
+  height: 180px;
+  margin-bottom: var(--sp-4);
+}
+
+
+.destinazioni-gif img {
+  width: 100%;
+}
+
+.footer-text {
+  margin-left: 24px;
+}
+
+footer {
+  margin-top: var(--sp-4);
+}
+
+
+}
+
+
+
+
